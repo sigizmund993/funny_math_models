@@ -10,105 +10,105 @@
 using namespace std;
 
 #define SQUARE(x) ((x) * (x))
-class Point3D {
-public: 
-    double x, y, z;
+// class Point3D {
+// public: 
+//     double x, y, z;
 
-    // Конструкторы
-    Point3D() : x(0), y(0), z(0) {}
-    Point3D(double x_, double y_, double z_) : x(x_), y(y_), z(z_) {}
+//     // Конструкторы
+//     Point3D() : x(0), y(0), z(0) {}
+//     Point3D(double x_, double y_, double z_) : x(x_), y(y_), z(z_) {}
 
-    // Операторы сложения и вычитания
-    Point3D operator+(const Point3D& other) const {
-        return Point3D(x + other.x, y + other.y, z + other.z);
-    }
-    Point3D operator-(const Point3D& other) const {
-        return Point3D(x - other.x, y - other.y, z - other.z);
-    }
+//     // Операторы сложения и вычитания
+//     Point3D operator+(const Point3D& other) const {
+//         return Point3D(x + other.x, y + other.y, z + other.z);
+//     }
+//     Point3D operator-(const Point3D& other) const {
+//         return Point3D(x - other.x, y - other.y, z - other.z);
+//     }
 
-    // Операторы умножения и деления на скаляр
-    Point3D operator*(double scalar) const {
-        return Point3D(x * scalar, y * scalar, z * scalar);
-    }
-    Point3D operator/(double scalar) const {
-        // Добавлена проверка на деление на ноль
-        if (scalar == 0.0) {
-            // В зависимости от задачи, можно выбросить исключение или вернуть нулевой вектор
-            return Point3D(0, 0, 0); 
-        }
-        return Point3D(x / scalar, y / scalar, z / scalar);
-    }
+//     // Операторы умножения и деления на скаляр
+//     Point3D operator*(double scalar) const {
+//         return Point3D(x * scalar, y * scalar, z * scalar);
+//     }
+//     Point3D operator/(double scalar) const {
+//         // Добавлена проверка на деление на ноль
+//         if (scalar == 0.0) {
+//             // В зависимости от задачи, можно выбросить исключение или вернуть нулевой вектор
+//             return Point3D(0, 0, 0); 
+//         }
+//         return Point3D(x / scalar, y / scalar, z / scalar);
+//     }
 
-    // Составные операторы
-    Point3D& operator+=(const Point3D& other) {
-        x += other.x;
-        y += other.y;
-        z += other.z;
-        return *this;
-    }
-    Point3D& operator-=(const Point3D& other) {
-        x -= other.x;
-        y -= other.y;
-        z -= other.z;
-        return *this;
-    }
-    Point3D& operator*=(double scalar) {
-        x *= scalar;
-        y *= scalar;
-        z *= scalar;
-        return *this;
-    }
-    Point3D& operator/=(double scalar) {
-        // Добавлена проверка на деление на ноль
-        if (scalar == 0.0) {
-            // Обработка ошибки
-            return *this;
-        }
-        x /= scalar;
-        y /= scalar;
-        z /= scalar;
-        return *this;
-    }
+//     // Составные операторы
+//     Point3D& operator+=(const Point3D& other) {
+//         x += other.x;
+//         y += other.y;
+//         z += other.z;
+//         return *this;
+//     }
+//     Point3D& operator-=(const Point3D& other) {
+//         x -= other.x;
+//         y -= other.y;
+//         z -= other.z;
+//         return *this;
+//     }
+//     Point3D& operator*=(double scalar) {
+//         x *= scalar;
+//         y *= scalar;
+//         z *= scalar;
+//         return *this;
+//     }
+//     Point3D& operator/=(double scalar) {
+//         // Добавлена проверка на деление на ноль
+//         if (scalar == 0.0) {
+//             // Обработка ошибки
+//             return *this;
+//         }
+//         x /= scalar;
+//         y /= scalar;
+//         z /= scalar;
+//         return *this;
+//     }
 
-    // Операторы сравнения
-    bool operator==(const Point3D& other) const {
-        return x == other.x && y == other.y && z == other.z;
-    }
-    bool operator!=(const Point3D& other) const {
-        return !(*this == other);
-    }
+//     // Операторы сравнения
+//     bool operator==(const Point3D& other) const {
+//         return x == other.x && y == other.y && z == other.z;
+//     }
+//     bool operator!=(const Point3D& other) const {
+//         return !(*this == other);
+//     }
 
-    // Скалярное произведение (dot product)
-    double dot(const Point3D& other) const {
-        return x * other.x + y * other.y + z * other.z;
-    }
+//     // Скалярное произведение (dot product)
+//     double dot(const Point3D& other) const {
+//         return x * other.x + y * other.y + z * other.z;
+//     }
 
-    // Векторное произведение (cross product)
-    Point3D cross(const Point3D& other) const {
-        return Point3D(
-            y * other.z - z * other.y,
-            z * other.x - x * other.z,
-            x * other.y - y * other.x
-        );
-    }
+//     // Векторное произведение (cross product)
+//     Point3D cross(const Point3D& other) const {
+//         return Point3D(
+//             y * other.z - z * other.y,
+//             z * other.x - x * other.z,
+//             x * other.y - y * other.x
+//         );
+//     }
 
-    // Вычисление длины вектора (magnitude)
-    double mag() const {
-        return std::sqrt(x * x + y * y + z * z);
-    }
+//     // Вычисление длины вектора (magnitude)
+//     double mag() const {
+//         return std::sqrt(x * x + y * y + z * z);
+//     }
     
-    // Возвращает нормализованный вектор (длина равна 1)
-    Point3D unity() const {
-        double len = mag();
-        return len > 0.0 ? Point3D(x / len, y / len, z / len) : Point3D(0.0, 0.0, 0.0);
-    }
-};
+//     // Возвращает нормализованный вектор (длина равна 1)
+//     Point3D unity() const {
+//         double len = mag();
+//         return len > 0.0 ? Point3D(x / len, y / len, z / len) : Point3D(0.0, 0.0, 0.0);
+//     }
+// };
 
-// Функция для вывода вектора в поток
-std::ostream& operator<<(std::ostream& os, const Point3D& p) {
-    os << "(" << p.x << ", " << p.y << ", " << p.z << ")";
-    return os;
-}
+// // Функция для вывода вектора в поток
+// std::ostream& operator<<(std::ostream& os, const Point3D& p) {
+//     os << "(" << p.x << ", " << p.y << ", " << p.z << ")";
+//     return os;
+// }
 class Point
 {
 public:
@@ -206,11 +206,11 @@ public:
     }
 };
 
-ostream &operator<<(ostream &os, const Point &point)
-{
-    os << "x = " << point.x << ", y = " << point.y;
-    return os;
-}
+// iostream &operator<<(ostream &os, const Point &point)
+// {
+//     os << "x = " << point.x << ", y = " << point.y;
+//     return os;
+// }
 
 Point GRAVEYARD_POS = Point(GRAVEYARD_POS_X, 0);
 

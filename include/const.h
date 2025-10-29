@@ -41,7 +41,7 @@
 #define FLOOR_MU 0.25
 #define ALPHA 47.87
 #define BALL_L 0.111
-#define g Point3D(0,0,-9.81)
-Point3D R_bd(0,-sin(ALPHA)*BALL_R,cos(ALPHA)*BALL_R);
-Point3D R_db = Point3D()-R_bd.unity()*DRIBBLER_R;
-Point3D R_bf = Point3D(0,0,-BALL_R);
+// #define g Point3D(0,0,-9.81)
+// Point3D R_bd(0,-sin(ALPHA)*BALL_R,cos(ALPHA)*BALL_R);
+// Point3D R_db = Point3D()-R_bd.unity()*DRIBBLER_R;
+// Point3D R_bf = Point3D(0,0,-BALL_R);
