@@ -4,7 +4,7 @@
 #include <cmath>
 #include <cfloat>
 #include <stdint.h>
-#include "include/const.h"
+#include "const.cuh"
 
 struct __align__(8) Point {
     float x;
@@ -194,3 +194,6 @@ __host__ __device__ __forceinline__ bool is_point_inside_poly(const Point &p, co
     }
     return true;
 }
+
+
+

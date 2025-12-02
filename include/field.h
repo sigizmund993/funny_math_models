@@ -47,11 +47,11 @@ public:
     }
 };
 
-// ostream &operator<<(ostream &os, const Ball &ball)
-// {
-//     os << "pos: " << ball.get_pos() << " vel: " << ball.get_vel() << " acc: "  << ball.get_acc();
-//     return os;
-// }
+ostream &operator<<(ostream &os, const Ball &ball)
+{
+    os << "pos: " << ball.get_pos() << " vel: " << ball.get_vel() << " acc: "  << ball.get_acc();
+    return os;
+}
 
 class Robot : public Ball
 {

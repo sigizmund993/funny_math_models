@@ -206,11 +206,11 @@ public:
     }
 };
 
-// iostream &operator<<(ostream &os, const Point &point)
-// {
-//     os << "x = " << point.x << ", y = " << point.y;
-//     return os;
-// }
+ostream &operator<<(ostream &os, const Point &point)
+{
+    os << "x = " << point.x << ", y = " << point.y;
+    return os;
+}
 
 Point GRAVEYARD_POS = Point(GRAVEYARD_POS_X, 0);
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "cuda_auxilary.cuh"
-#include "const.h"
+#include "const.cuh"
 
 #define MAX_TRAJ_STEPS 64
 
@@ -148,7 +148,7 @@ float estimate_rv(estimate_data data, Trajectory traj)
         if((vel+acc*time).mag()>MAX_SPEED)
         {
             cosalpha = cosf(get_angle_between_points(Point(0,0),vel,vel+acc));
-            timesat = (cosalpha*vel.mag()+MAX_SPEED*MAX_SPEED-sqrtf(vel.mag()*vel.mag()*(1-cosalpha*cosalpha)))/MAX_ACC;//cos th
+            timesat = (cosalpha*vel.mag()+sqrtf(cosalpha*cosalpha*vel.mag2()+MAX_SPEED*MAX_SPEED-vel.mag2()))/MAX_ACC;
             r += vel*timesat + acc*timesat*timesat/2;
             vel += acc*timesat;
             r+= vel*(time-timesat);
@@ -175,6 +175,7 @@ float estimate_time(estimate_data data, Trajectory traj)
 }
 float estimate_collisions(estimate_data data, Trajectory traj)
 {
-    float est;
     
+    float est = 0;
+    return est;
 }
